@@ -139,3 +139,12 @@ import * as INSTANCE from "./instances.js"
 // Assurez vous qu'ils quittent chaque fois la salle d'attente  avant d'entrer dans le cabinet du médecin, et qu'ils sortent bien du cabinet avant de laisser quelqu'un d'autre entrer.
 
 
+function life() {
+    //Welcoming message of the software
+    console.log("Hello, we are going to see what is LIFE ! ");
+
+    
+
+}
+
+life();
