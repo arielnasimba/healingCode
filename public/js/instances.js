@@ -25,3 +25,31 @@ export let OPTIMUS = new CLASSES.Patient("Optimus","unsave", 200, "vide", "malad
 export let SANGOKU = new CLASSES.Patient("Sangoku","404", 80, "vide", "malade");
 export let DARTHVADER = new CLASSES.Patient("DarthVader","azmatique", 110, "vide", "malade");
 export let SEMICOLON = new CLASSES.Patient("Semicolon","syntaxError", 60, "vide", "malade");
+
+//! DONE
+/***************************************************************************** */
+
+// Description du docteur
+ 
+
+// Le docteur reçoit les patients dans son cabinet.
+
+// Il les diagnostique, se fait payer, puis prescrit un traitement.
+
+// Attention, le docteur fait sortir le patient de son cabinet avant de prendre le suivant.
+
+// Dans son cabinet, il y a son chat de race sphynx pour maintenir un environnement stérile.
+
+// Son chat miaule toutes les deux secondes dans la console (bonus).
+
+// La consultation coûte 50€. Les patients sont dans un état de traitement avant de sortir du cabinet.
+
+ 
+
+// | Nom         | Argent | Cabinet | Diagnostique | Patient In | Patient Out |
+// | ----------- | ------ | ------- | ------------ | ---------- | ----------- |
+// | Debugger    | 0      | [chat]  | -            | -          | -           |
+
+/* Creation of doctor */
+
+export let DOCTOR = new CLASSES.Doctor("pierre", 0, 'chat', "-", "-", "-")

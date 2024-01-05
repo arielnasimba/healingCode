@@ -59,6 +59,10 @@ import * as INSTANCE from "./instances.js"
 // | Nom         | Argent | Cabinet | Diagnostique | Patient In | Patient Out |
 // | ----------- | ------ | ------- | ------------ | ---------- | ----------- |
 // | Debugger    | 0      | [chat]  | -            | -          | -           |
+
+/* DISPLAY DOCTOR OBJECT ( testing )*/
+
+console.log(INSTANCE.DOCTOR);
  
 
 // Grille des diagnostics 

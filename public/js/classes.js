@@ -63,7 +63,7 @@ export class Patient {
 // | Debugger    | 0      | [chat]  | -            | -          | -           |
 
 
-class Doctor {
+export class Doctor {
     /**
      * 
      * @param {*} name : name of patient in office's doctor
