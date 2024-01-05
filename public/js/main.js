@@ -115,6 +115,9 @@ import * as INSTANCE from "./instances.js"
  
 // console.log(INSTANCE.PHARMACY);
 
+//! DONE 
+/***************************************************************************** */
+
 // Le cimetière
  
 
@@ -123,8 +126,10 @@ import * as INSTANCE from "./instances.js"
 //  (un message triste du type annonces nécrologique, indique les détails du décès)
 
  
-
+// console.log(INSTANCE.GRAVEYARD);
  
+//! DONE 
+/***************************************************************************** */
 
 // Vérification
  

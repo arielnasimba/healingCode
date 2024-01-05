@@ -101,3 +101,21 @@ export let PHARMACY  = {
     treatment : [DIAGNOSTIC_GRID.treatment],
     price : [60, 100, 35, 40, 20],
 }
+
+//! DONE
+/***************************************************************************** */
+
+// Le cimetière
+ 
+
+// Les patients qui a après être passés a la pharmacie n'ont pas pu se procurer leur remède, meurt
+
+//  (un message triste du type annonces nécrologique, indique les détails du décès)
+
+/* Creation of graveyard */
+
+export let GRAVEYARD = {
+    name : "graveyard",
+    death_reason : [],
+    death_message : ["necrologique ads", "death details"],
+}
