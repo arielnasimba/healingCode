@@ -77,6 +77,10 @@ import * as INSTANCE from "./instances.js"
 // | azmatique     | `Ventoline`         |
 // | syntaxError   | `f12+doc`           |
  
+/* DISPLAY DIAGNOSTIC_GRID OBJECT ( testing )*/
+
+// console.log(INSTANCE.DIAGNOSTIC_GRID);
+
 /***************************************************************************** */
 
 // La pharmacie 

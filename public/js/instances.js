@@ -52,4 +52,20 @@ export let SEMICOLON = new CLASSES.Patient("Semicolon","syntaxError", 60, "vide"
 
 /* Creation of doctor */
 
-export let DOCTOR = new CLASSES.Doctor("pierre", 0, 'chat', "-", "-", "-")
+export let DOCTOR = new CLASSES.Doctor("pierre", 0, 'chat', "-", "-", "-");
+
+//! DONE
+/***************************************************************************** */
+
+// Grille des diagnostics 
+ 
+
+// | Maladie       | Traitement          |
+// | ------------- | ------------------- |
+// | mal indenté   | `ctrl+maj+f`        |
+// | unsave        | `saveOnFocusChange` |
+// | 404           | `CheckLinkRelation` |
+// | azmatique     | `Ventoline`         |
+// | syntaxError   | `f12+doc`           |
+
+export let DIAGNOSTIC_GRID = new CLASSES.Diagnostic_grid([ "mal indenté","unsave","404","azmatique","syntaxError"], ["`ctrl+maj+f`", "`saveOnFocusChange`", "`CheckLinkRelation`", "`Ventoline`","`f12+doc`"]);
