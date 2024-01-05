@@ -68,4 +68,16 @@ export let DOCTOR = new CLASSES.Doctor("pierre", 0, 'chat', "-", "-", "-");
 // | azmatique     | `Ventoline`         |
 // | syntaxError   | `f12+doc`           |
 
+/* Creation of diagnostic grid */
+
 export let DIAGNOSTIC_GRID = new CLASSES.Diagnostic_grid([ "mal indenté","unsave","404","azmatique","syntaxError"], ["`ctrl+maj+f`", "`saveOnFocusChange`", "`CheckLinkRelation`", "`Ventoline`","`f12+doc`"]);
+
+//! DONE
+/***************************************************************************** */
+
+/* Creation of doctor's office */
+
+export let OFFICE = {
+    name : "office",
+    patientAt : [],
+}

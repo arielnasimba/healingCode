@@ -106,6 +106,9 @@ export class Diagnostic_grid{
     }
 }
 
+//! DONE (sthg to check yet)
+/***********************************************/
+
 class character {
     constructor(name, lieu, argent, mainDroite,mainGauche){
         this.name = name;

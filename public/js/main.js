@@ -64,6 +64,8 @@ import * as INSTANCE from "./instances.js"
 
 // console.log(INSTANCE.DOCTOR);
  
+//! DONE 
+
 /***************************************/
 
 // Grille des diagnostics 
@@ -81,7 +83,10 @@ import * as INSTANCE from "./instances.js"
 
 // console.log(INSTANCE.DIAGNOSTIC_GRID);
 
+//! DONE 
 /***************************************************************************** */
+
+// console.log(INSTANCE.OFFICE);
 
 // La pharmacie 
  
