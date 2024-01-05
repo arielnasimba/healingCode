@@ -20,11 +20,11 @@ import * as CLASSES from "./classes.js"
 
 /* Creation of all patients */
 
-export let MARCUS = new CLASSES.Patient("Marcus","mal indenté", 100, "vide", "malade",[]);
-export let OPTIMUS = new CLASSES.Patient("Optimus","unsave", 200, "vide", "malade", []);
-export let SANGOKU = new CLASSES.Patient("Sangoku","404", 80, "vide", "malade", []);
-export let DARTHVADER = new CLASSES.Patient("DarthVader","azmatique", 110, "vide", "malade", []);
-export let SEMICOLON = new CLASSES.Patient("Semicolon","syntaxError", 60, "vide", "malade", []);
+export let MARCUS = new CLASSES.Patient("Marcus","mal indenté", 100, [], "malade",[]);
+export let OPTIMUS = new CLASSES.Patient("Optimus","unsave", 200, [], "malade", []);
+export let SANGOKU = new CLASSES.Patient("Sangoku","404", 80, [], "malade", []);
+export let DARTHVADER = new CLASSES.Patient("DarthVader","azmatique", 110, [], "malade", []);
+export let SEMICOLON = new CLASSES.Patient("Semicolon","syntaxError", 60, [], "malade", []);
 
 export let PATIENTS = [MARCUS, OPTIMUS, SANGOKU, DARTHVADER, SEMICOLON];
 

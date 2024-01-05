@@ -27,7 +27,7 @@ import * as INSTANCE from "./instances.js"
 // | DarthVader | azmatique    | 110    | vide  | malade        |
 // | Semicolon  | syntaxError  | 60     | vide  | malade        |
  
-//! DONE    
+//! DONE   100% 
 
 /* DISPLAY PATIENT OBJECT ( testing )*/
 
@@ -86,7 +86,7 @@ import * as INSTANCE from "./instances.js"
 //! DONE 
 /***************************************************************************** */
 
-// console.log(INSTANCE.OFFICE);
+console.log(INSTANCE.OFFICE);
 
 // La pharmacie 
  
@@ -171,10 +171,15 @@ function life() {
     console.log("Hello, we are going to see what is LIFE ! ");
 
 
-    //Patient going to doctor's office
-    
+    //Patients going to doctor's office
+    console.log(`${INSTANCE.PATIENTS.map( (x) => x.name + " ")}are going to the doctor's ${INSTANCE.OFFICE.name}`);
+
+    //Patients are in waiting room first
+    console.log(`${INSTANCE.OFFICE.waiting_room.map( (x) => x.name + " ")}are waiting on the waiting room`);
+
+
     // console.log(INSTANCE.OFFICE);
-    go_to_doctor(INSTANCE.MARCUS, INSTANCE.OFFICE);
+    // go_to_doctor(INSTANCE.MARCUS, INSTANCE.OFFICE);
     // console.log(INSTANCE.OFFICE);
 
 }
