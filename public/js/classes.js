@@ -17,8 +17,16 @@
 // | DarthVader | azmatique    | 110    | vide  | malade        |
 // | Semicolon  | syntaxError  | 60     | vide  | malade        |
 
-export class Patient {
 
+export class Patient {
+/**     Create a object Patient
+ * 
+ * @param {*} name : name of patient
+ * @param {*} illness : illness of patient
+ * @param {*} money : money of patient
+ * @param {*} pocket : pocket of patient
+ * @param {*} health : health of patient
+ */
     constructor(name, illness, money, pocket, health){
         this.name = name;
         this.illness = illness;

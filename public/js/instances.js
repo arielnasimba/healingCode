@@ -18,4 +18,10 @@ import * as CLASSES from "./classes.js"
 // | DarthVader | azmatique    | 110    | vide  | malade        |
 // | Semicolon  | syntaxError  | 60     | vide  | malade        |
 
-let MARCUS = new CLASSES.Patient();
+/* Creation of all patients */
+
+let MARCUS = new CLASSES.Patient("Marcus","mal indenté", 100, "vide", "malade");
+let OPTIMUS = new CLASSES.Patient("Optimus","unsave", 200, "vide", "malade");
+let SANGOKU = new CLASSES.Patient("Sangoku","404", 80, "vide", "malade");
+let DARTHVADER = new CLASSES.Patient("DarthVader","azmatique", 110, "vide", "malade");
+let SEMICOLON = new CLASSES.Patient("Semicolon","syntaxError", 60, "vide", "malade");
