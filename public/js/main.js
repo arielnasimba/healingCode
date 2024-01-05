@@ -62,8 +62,9 @@ import * as INSTANCE from "./instances.js"
 
 /* DISPLAY DOCTOR OBJECT ( testing )*/
 
-console.log(INSTANCE.DOCTOR);
+// console.log(INSTANCE.DOCTOR);
  
+/***************************************/
 
 // Grille des diagnostics 
  
@@ -76,6 +77,7 @@ console.log(INSTANCE.DOCTOR);
 // | azmatique     | `Ventoline`         |
 // | syntaxError   | `f12+doc`           |
  
+/***************************************************************************** */
 
 // La pharmacie 
  

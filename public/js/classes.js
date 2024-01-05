@@ -83,6 +83,28 @@ export class Doctor {
     }
 }
 
+//! DONE
+/***********************************************/
+
+
+// Grille des diagnostics 
+ 
+
+// | Maladie       | Traitement          |
+// | ------------- | ------------------- |
+// | mal indenté   | `ctrl+maj+f`        |
+// | unsave        | `saveOnFocusChange` |
+// | 404           | `CheckLinkRelation` |
+// | azmatique     | `Ventoline`         |
+// | syntaxError   | `f12+doc`           |
+
+export class Diagnostic_grid{
+
+    constructor(illness, treatment){
+        this.illness = illness;
+        this.treatment = treatment;
+    }
+}
 
 class character {
     constructor(name, lieu, argent, mainDroite,mainGauche){
