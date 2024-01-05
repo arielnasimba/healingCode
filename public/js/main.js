@@ -1,3 +1,4 @@
+import * as INSTANCE from "./instances.js"
 // Projet HealingCode
  
 
@@ -27,6 +28,16 @@
 // | Semicolon  | syntaxError  | 60     | vide  | malade        |
  
 //! DONE    
+
+/* DISPLAY PATIENT OBJECT ( testing )*/
+
+// console.log(INSTANCE.MARCUS);
+// console.log(INSTANCE.OPTIMUS);
+// console.log(INSTANCE.SANGOKU);
+// console.log(INSTANCE.DARTHVADER);
+// console.log(INSTANCE.SEMICOLON);
+
+//! DONE 
 /***************************************************************************** */
 // Description du docteur
  

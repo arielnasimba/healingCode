@@ -9,6 +9,9 @@
 
 // (Liste des patients que vous allez crée, avec leurs valeurs respectives)
 
+
+
+
 // | Nom      | Maladie        | Argent | Poche | État de Santé |
 // | -------- | -------------- | ------ | ----- | ------------- |
 // | Marcus   | mal indenté    | 100    | vide  | malade        |
@@ -35,6 +38,51 @@ export class Patient {
         this.health = health;
     }
 }
+//! DONE
+/***********************************************/
+
+// Description du docteur
+ 
+
+// Le docteur reçoit les patients dans son cabinet.
+
+// Il les diagnostique, se fait payer, puis prescrit un traitement.
+
+// Attention, le docteur fait sortir le patient de son cabinet avant de prendre le suivant.
+
+// Dans son cabinet, il y a son chat de race sphynx pour maintenir un environnement stérile.
+
+// Son chat miaule toutes les deux secondes dans la console (bonus).
+
+// La consultation coûte 50€. Les patients sont dans un état de traitement avant de sortir du cabinet.
+
+ 
+
+// | Nom         | Argent | Cabinet | Diagnostique | Patient In | Patient Out |
+// | ----------- | ------ | ------- | ------------ | ---------- | ----------- |
+// | Debugger    | 0      | [chat]  | -            | -          | -           |
+
+
+class Doctor {
+    /**
+     * 
+     * @param {*} name : name of patient in office's doctor
+     * @param {*} money : money of patient
+     * @param {*} office : office of doctor
+     * @param {*} diagnostic : diagnostic of patient by doctor
+     * @param {*} patient_in : patient in office's of doctor
+     * @param {*} patient_out : patient out of office's of doctor
+     */
+    constructor(name, money, office, diagnostic, patient_in, patient_out){
+        this.name = name;
+        this.money = money;
+        this.office = office;
+        this.diagnostic = diagnostic;
+        this.patient_in = patient_in;
+        this.patient_out = patient_out;
+    }
+}
+
 
 class character {
     constructor(name, lieu, argent, mainDroite,mainGauche){
