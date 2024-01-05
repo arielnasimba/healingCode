@@ -20,11 +20,13 @@ import * as CLASSES from "./classes.js"
 
 /* Creation of all patients */
 
-export let MARCUS = new CLASSES.Patient("Marcus","mal indenté", 100, "vide", "malade");
-export let OPTIMUS = new CLASSES.Patient("Optimus","unsave", 200, "vide", "malade");
-export let SANGOKU = new CLASSES.Patient("Sangoku","404", 80, "vide", "malade");
-export let DARTHVADER = new CLASSES.Patient("DarthVader","azmatique", 110, "vide", "malade");
-export let SEMICOLON = new CLASSES.Patient("Semicolon","syntaxError", 60, "vide", "malade");
+export let MARCUS = new CLASSES.Patient("Marcus","mal indenté", 100, "vide", "malade",[]);
+export let OPTIMUS = new CLASSES.Patient("Optimus","unsave", 200, "vide", "malade", []);
+export let SANGOKU = new CLASSES.Patient("Sangoku","404", 80, "vide", "malade", []);
+export let DARTHVADER = new CLASSES.Patient("DarthVader","azmatique", 110, "vide", "malade", []);
+export let SEMICOLON = new CLASSES.Patient("Semicolon","syntaxError", 60, "vide", "malade", []);
+
+export let PATIENTS = [MARCUS, OPTIMUS, SANGOKU, DARTHVADER, SEMICOLON];
 
 //! DONE
 /***************************************************************************** */
@@ -79,7 +81,8 @@ export let DIAGNOSTIC_GRID = new CLASSES.Diagnostic_grid([ "mal indenté","unsav
 
 export let OFFICE = {
     name : "office",
-    patientAt : [],
+    people : [],
+    waiting_room : PATIENTS,
 }
 
 //! DONE
@@ -100,6 +103,7 @@ export let PHARMACY  = {
     name : "pharmacy",
     treatment : [DIAGNOSTIC_GRID.treatment],
     price : [60, 100, 35, 40, 20],
+    people : [],
 }
 
 //! DONE
@@ -118,6 +122,7 @@ export let GRAVEYARD = {
     name : "graveyard",
     death_reason : [],
     death_message : ["necrologique ads", "death details"],
+    people : [],
 }
 
 //! DONE

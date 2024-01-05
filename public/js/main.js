@@ -138,12 +138,44 @@ import * as INSTANCE from "./instances.js"
 
 // Assurez vous qu'ils quittent chaque fois la salle d'attente  avant d'entrer dans le cabinet du médecin, et qu'ils sortent bien du cabinet avant de laisser quelqu'un d'autre entrer.
 
+/**    Add patient object in place people array
+ * 
+ * @param {*} place : where to put patient object
+ * @param {*} all_patients : array to find patient object name
+ */
+function add_people_to(place, all_patients) {
+    let index = 0;
+    let isFound = false;
+
+    while (!isFound || index < all_patients.length) {
+        if (all_patients[index].name == place.people)  {
+            place.people = [];
+            place.people.push(all_patients[index]);
+            isFound = true;
+        }
+        index++;
+    }
+}
+
+function go_to_doctor(patient, doctor_office) {
+    console.log(`${patient.name} are going to ${doctor_office.name} of doctor :/`);
+    patient.moveTo(doctor_office);
+
+    add_people_to(doctor_office, INSTANCE.PATIENTS);
+
+}
 
 function life() {
+
     //Welcoming message of the software
     console.log("Hello, we are going to see what is LIFE ! ");
 
+
+    //Patient going to doctor's office
     
+    // console.log(INSTANCE.OFFICE);
+    go_to_doctor(INSTANCE.MARCUS, INSTANCE.OFFICE);
+    // console.log(INSTANCE.OFFICE);
 
 }
 

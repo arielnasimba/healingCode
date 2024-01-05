@@ -30,12 +30,24 @@ export class Patient {
  * @param {*} pocket : pocket of patient
  * @param {*} health : health of patient
  */
-    constructor(name, illness, money, pocket, health){
+    constructor(name, illness, money, pocket, health, localisation){
         this.name = name;
         this.illness = illness;
         this.money = money;
         this.pocket = pocket;
         this.health = health;
+        this.localisation = localisation;
+
+        /** move patient to place , adding place's name in localisation
+         * @param {*} place : place to move to
+         */
+        this.moveTo = function(place) {
+            this.localisation.push(place);
+            place.people.push(this.name);
+        }
+        this.payerArticle = function(article) {
+            this.argent -= article.price;
+        }
     }
 }
 //! DONE
@@ -108,30 +120,3 @@ export class Diagnostic_grid{
 
 //! DONE (sthg to check yet)
 /***********************************************/
-
-class character {
-    constructor(name, lieu, argent, mainDroite,mainGauche){
-        this.name = name;
-        this.lieu = lieu;
-        this.argent = argent;
-        this.mainDroite = mainDroite;
-        this.mainGauche = mainGauche;
-
-        this.seDeplacer = function(place) {
-            place.personnes.push(this.name);
-        }
-        this.payerArticle = function(article) {
-            this.argent -= article.price;
-        }
-        this.couper = function(ingredient, tool) {
-
-            ingredient.isTransformed = true;
-            // console.log(`We just cut the ${ingredient.name} with the ${tool.name}`);
-        }
-        this.melanger = function(contain) {
-            console.log(`\nAll ingredients were mixed an this make a omelette`);
-            contain.ingredient = [];
-            // return "omelette";
-        }
-    }
-};
