@@ -113,6 +113,7 @@ import * as INSTANCE from "./instances.js"
 // | `Ventoline`          | 40€   |
 // | `f12+doc`            | 20€   |
  
+// console.log(INSTANCE.PHARMACY);
 
 // Le cimetière
  

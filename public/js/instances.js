@@ -81,3 +81,23 @@ export let OFFICE = {
     name : "office",
     patientAt : [],
 }
+
+//! DONE
+/***************************************************************************** */
+
+
+// | Traitement           | Prix  |
+// | -------------------- | ----- |
+// | `ctrl+maj+f`         | 60€   |
+// | `saveOnFocusChange`  | 100€  |
+// | `CheckLinkRelation`  | 35€   |
+// | `Ventoline`          | 40€   |
+// | `f12+doc`            | 20€   |
+
+/* Creation of pharmacy */
+
+export let PHARMACY  = {
+    name : "pharmacy",
+    treatment : [DIAGNOSTIC_GRID.treatment],
+    price : [60, 100, 35, 40, 20],
+}
