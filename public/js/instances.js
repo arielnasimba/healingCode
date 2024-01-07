@@ -138,7 +138,6 @@ export let PHARMACY  = {
 export let GRAVEYARD = {
     name : "graveyard",
     death_reason : [],
-    death_message : ["necrologique ads", "death details"],
     people : [],
 }
 

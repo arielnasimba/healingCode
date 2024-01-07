@@ -235,6 +235,11 @@ function go_to_doctor(patient, doctor_office, doctor) {
     return patient;
 
 }
+function go_to_graveyard(patient, graveyard) {
+    console.log(`You don't have enough money to pay the treatment,\nYou will go to the ${graveyard.name} sorry :/`);
+    graveyard.people.push(patient);
+    console.log(`We are deeply saddened by the loss \nand send you our most sincere condolences for ${patient.name}`);
+}
 
 function go_to_pharmacy(patient, pharmacy) {
 
@@ -250,19 +255,16 @@ function go_to_pharmacy(patient, pharmacy) {
 
     if (patient.money >= price_treatment) {
         console.log(`You have ${patient.money}€ and the price for the treatment is ${price_treatment}€`);
+        console.log(`Thank you for yout trust and and looking forward to never seeing again.`);
+        patient.money -= price_treatment;
+        console.log(`You have now ${patient.money}`); 
     } else{
         console.log(`You have ${patient.money}€ and the price for the treatment is ${price_treatment}€`);
-        console.log(`You don't have enough money to pay the treatment,\nYou will go to the ${INSTANCE.GRAVEYARD.name} sorry :/`);
-
-        INSTANCE.GRAVEYARD.people.push(patient);
+        go_to_graveyard(patient, INSTANCE.GRAVEYARD);
         console.log(INSTANCE.GRAVEYARD);
+
     }
 
-    // console.log(pharmacy);
-    // console.log(pharmacy.treatment);
-    // console.log(pharmacy.price);
-
-    // console.log(patient);
 }
 
 function life() {
