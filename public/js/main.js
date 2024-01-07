@@ -183,11 +183,16 @@ function find_treatment_to(illness, diagnostic_grid) {
     return illness_treatment;
 
 }
+function find_price_to(diagnostic_of_patient, pharmacy) {
+    let pos_treatment = pharmacy.treatment[0].indexOf(diagnostic_of_patient);
+
+    let price_treatment = pharmacy.price[pos_treatment];
+    return price_treatment;
+}
 
 function check_money_of(patient_money, consultation_price) {
     return patient_money >= consultation_price;
 }
-// find_treatment_to(INSTANCE.SANGOKU.illness, INSTANCE.DIAGNOSTIC_GRID)
 
 function diagnose(patient, doctor) {
     console.log(`Hello ${patient.name}, I'm ${doctor.name} the doctor\nso please tell me what is wrong ?`);
@@ -195,6 +200,7 @@ function diagnose(patient, doctor) {
 
     let treatment = find_treatment_to(patient.illness, INSTANCE.DIAGNOSTIC_GRID);
     doctor.diagnose = treatment;
+    patient.patient_diagnostic = treatment;
 
     console.log(`The consultation is over, the price is 50€`);
     if (check_money_of( patient.money, 50 ) ) {
@@ -233,10 +239,30 @@ function go_to_doctor(patient, doctor_office, doctor) {
 function go_to_pharmacy(patient, pharmacy) {
 
     console.log(`------ ${patient.name} is going to the ${pharmacy.name} ------`);
+    console.log(`Welcome ${patient.name}, how can I help you ?`);
+    pharmacy.people = patient;
+    // console.log(pharmacy.people);
+    console.log(`So, ${patient.name} you have illness of ${patient.illness}`);
 
-console.log(patient.name);
-console.log(pharmacy.name);
-    
+    let price_treatment = find_price_to(patient.patient_diagnostic, pharmacy);
+    console.log(`The ${patient.patient_diagnostic} treatment will cost you ${price_treatment}€`);
+
+
+    if (patient.money >= price_treatment) {
+        console.log(`You have ${patient.money}€ and the price for the treatment is ${price_treatment}€`);
+    } else{
+        console.log(`You have ${patient.money}€ and the price for the treatment is ${price_treatment}€`);
+        console.log(`You don't have enough money to pay the treatment,\nYou will go to the ${INSTANCE.GRAVEYARD.name} sorry :/`);
+
+        INSTANCE.GRAVEYARD.people.push(patient);
+        console.log(INSTANCE.GRAVEYARD);
+    }
+
+    // console.log(pharmacy);
+    // console.log(pharmacy.treatment);
+    // console.log(pharmacy.price);
+
+    // console.log(patient);
 }
 
 function life() {
@@ -261,6 +287,7 @@ function life() {
     //now patient go to the pharmacy
     go_to_pharmacy(client, INSTANCE.PHARMACY)
     // console.log(INSTANCE.SANGOKU);
+    // console.log(INSTANCE.PHARMACY);
 
 }
 

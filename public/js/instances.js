@@ -120,7 +120,7 @@ export let PHARMACY  = {
     name : "pharmacy",
     treatment : [DIAGNOSTIC_GRID.treatment],
     price : [60, 100, 35, 40, 20],
-    people : [],
+    people : "",
 }
 
 //! DONE

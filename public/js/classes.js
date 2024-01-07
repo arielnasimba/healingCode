@@ -29,14 +29,16 @@ export class Patient {
  * @param {*} money : money of patient
  * @param {*} pocket : pocket of patient
  * @param {*} health : health of patient
+ * @param {*} patient_diagnostic : diagnostic of patient
  */
-    constructor(name, illness, money, pocket, health, localisation){
+    constructor(name, illness, money, pocket, health, localisation, patient_diagnostic){
         this.name = name;
         this.illness = illness;
         this.money = money;
         this.pocket = pocket;
         this.health = health;
         this.localisation = localisation;
+        this.patient_diagnostic = patient_diagnostic;
 
         /** move patient to place , adding place's name in localisation
          * @param {*} place : place to move to
