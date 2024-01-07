@@ -63,7 +63,8 @@ import * as INSTANCE from "./instances.js"
 /* DISPLAY DOCTOR OBJECT ( testing )*/
 
 // console.log(INSTANCE.DOCTOR);
- 
+// INSTANCE.CHAT.meow();
+
 //! DONE 
 
 /***************************************/
@@ -86,7 +87,7 @@ import * as INSTANCE from "./instances.js"
 //! DONE 
 /***************************************************************************** */
 
-console.log(INSTANCE.OFFICE);
+// console.log(INSTANCE.OFFICE);
 
 // La pharmacie 
  
@@ -137,7 +138,7 @@ console.log(INSTANCE.OFFICE);
 // Suivez attentivement l'évolution de chacun de vos patients grâce à vos console.log.
 
 // Assurez vous qu'ils quittent chaque fois la salle d'attente  avant d'entrer dans le cabinet du médecin, et qu'ils sortent bien du cabinet avant de laisser quelqu'un d'autre entrer.
-
+ 
 /**    Add patient object in place people array
  * 
  * @param {*} place : where to put patient object
@@ -147,22 +148,95 @@ function add_people_to(place, all_patients) {
     let index = 0;
     let isFound = false;
 
+    let p_found = null;
+
     while (!isFound || index < all_patients.length) {
+
         if (all_patients[index].name == place.people)  {
             place.people = [];
             place.people.push(all_patients[index]);
+            p_found = all_patients[index];
+            // console.log(all_patients[index]);
+            // console.log(place.people);
+            // console.log(place.waiting_room);
+            isFound = true;
+        }
+        index++;
+    }
+    isFound = false;
+    index = 0;
+    while (!isFound && index < place.waiting_room[0].length ) {
+        if (place.waiting_room[0][index].name ==  p_found.name) {
+            place.waiting_room[0].splice(index,1);
             isFound = true;
         }
         index++;
     }
 }
 
-function go_to_doctor(patient, doctor_office) {
-    console.log(`${patient.name} are going to ${doctor_office.name} of doctor :/`);
+function find_treatment_to(illness, diagnostic_grid) {
+    console.log(`So you have illness of ${illness} `);
+    let pos_illness = diagnostic_grid.illness.indexOf(illness);
+    let illness_treatment = diagnostic_grid.treatment[pos_illness];
+    console.log(`The treatment of your illness is ${illness_treatment}`);
+
+    return illness_treatment;
+
+}
+
+function check_money_of(patient_money, consultation_price) {
+    return patient_money >= consultation_price;
+}
+// find_treatment_to(INSTANCE.SANGOKU.illness, INSTANCE.DIAGNOSTIC_GRID)
+
+function diagnose(patient, doctor) {
+    console.log(`Hello ${patient.name}, I'm ${doctor.name} the doctor\nso please tell me what is wrong ?`);
+    doctor.name_patient = patient.name;
+
+    let treatment = find_treatment_to(patient.illness, INSTANCE.DIAGNOSTIC_GRID);
+    doctor.diagnose = treatment;
+
+    console.log(`The consultation is over, the price is 50€`);
+    if (check_money_of( patient.money, 50 ) ) {
+        patient.money -= 50;
+        console.log("Thank you for your trust");
+        console.log(`Have a good day ${patient.name} :)`);
+
+        doctor.money +=  50 ;
+        // console.log(doctor.money);
+    } else{
+        console.log(`You just have ${patient.money} \nYou will have to take a credit\nBYE!` );
+    }
+    // console.log(doctor.diagnose);
+}
+
+
+
+function go_to_doctor(patient, doctor_office, doctor) {
     patient.moveTo(doctor_office);
 
     add_people_to(doctor_office, INSTANCE.PATIENTS);
 
+    INSTANCE.DOCTOR.patient_in = patient;
+
+    diagnose(patient,doctor);
+
+
+    doctor.name_patient = ""; doctor.diagnotic = ""; doctor.patient_in = ""; 
+    doctor.patient_out = patient;
+    // console.log(doctor);
+
+    return patient;
+
+}
+
+function go_to_pharmacy(patient, pharmacy) {
+
+    console.log(`------ ${patient.name} is going to the ${pharmacy.name} ------`);
+
+console.log(patient.name);
+console.log(pharmacy.name);
+    
 }
 
 function life() {
@@ -170,17 +244,23 @@ function life() {
     //Welcoming message of the software
     console.log("Hello, we are going to see what is LIFE ! ");
 
-
     //Patients going to doctor's office
-    console.log(`${INSTANCE.PATIENTS.map( (x) => x.name + " ")}are going to the doctor's ${INSTANCE.OFFICE.name}`);
+    console.log(`------ ${INSTANCE.PATIENTS.map( (x) => x.name + " ")}------\n       are going to the doctor's ${INSTANCE.OFFICE.name}`);
 
     //Patients are in waiting room first
-    console.log(`${INSTANCE.OFFICE.waiting_room.map( (x) => x.name + " ")}are waiting on the waiting room`);
+    INSTANCE.OFFICE.waiting_room.push(INSTANCE.PATIENTS);
+    console.log(`But the doctor ${INSTANCE.DOCTOR.name} can help only one patient at the same time\nSo, ${INSTANCE.OFFICE.waiting_room[0].map( (x) => x.name + " ")}are waiting on the waiting room`);
 
+    
+    // First patient to get the doctor
+    
+    let client ="";
+    client = go_to_doctor(INSTANCE.PATIENTS[2], INSTANCE.OFFICE, INSTANCE.DOCTOR);
+    
 
-    // console.log(INSTANCE.OFFICE);
-    // go_to_doctor(INSTANCE.MARCUS, INSTANCE.OFFICE);
-    // console.log(INSTANCE.OFFICE);
+    //now patient go to the pharmacy
+    go_to_pharmacy(client, INSTANCE.PHARMACY)
+    // console.log(INSTANCE.SANGOKU);
 
 }
 

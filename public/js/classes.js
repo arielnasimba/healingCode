@@ -42,7 +42,7 @@ export class Patient {
          * @param {*} place : place to move to
          */
         this.moveTo = function(place) {
-            this.localisation.push(place);
+            this.localisation.push(place.name);
             place.people.push(this.name);
         }
         this.payerArticle = function(article) {
@@ -85,8 +85,9 @@ export class Doctor {
      * @param {*} patient_in : patient in office's of doctor
      * @param {*} patient_out : patient out of office's of doctor
      */
-    constructor(name, money, office, diagnostic, patient_in, patient_out){
+    constructor(name,name_patient, money, office, diagnostic, patient_in, patient_out){
         this.name = name;
+        this.name_patient = name_patient;
         this.money = money;
         this.office = office;
         this.diagnostic = diagnostic;

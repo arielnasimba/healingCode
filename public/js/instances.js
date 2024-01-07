@@ -52,9 +52,26 @@ export let PATIENTS = [MARCUS, OPTIMUS, SANGOKU, DARTHVADER, SEMICOLON];
 // | ----------- | ------ | ------- | ------------ | ---------- | ----------- |
 // | Debugger    | 0      | [chat]  | -            | -          | -           |
 
+
+/* Creation of cat to maintain a sterile environment */
+export let CAT = { 
+    name : "chat of doctor",
+    race : "sphynx",
+
+    meow() {
+
+        function test() {
+            console.log("meow meow");
+            console.log("meow meow");
+        }
+
+        setInterval(test, 2000);
+    }   
+}
+
 /* Creation of doctor */
 
-export let DOCTOR = new CLASSES.Doctor("pierre", 0, 'chat', "-", "-", "-");
+export let DOCTOR = new CLASSES.Doctor("Pierre", "",0, CAT, "", "", "");
 
 //! DONE
 /***************************************************************************** */
@@ -82,7 +99,7 @@ export let DIAGNOSTIC_GRID = new CLASSES.Diagnostic_grid([ "mal indenté","unsav
 export let OFFICE = {
     name : "office",
     people : [],
-    waiting_room : PATIENTS,
+    waiting_room : [],
 }
 
 //! DONE
