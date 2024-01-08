@@ -156,9 +156,6 @@ function add_people_to(place, all_patients) {
             place.people = [];
             place.people.push(all_patients[index]);
             p_found = all_patients[index];
-            // console.log(all_patients[index]);
-            // console.log(place.people);
-            // console.log(place.waiting_room);
             isFound = true;
         }
         index++;
@@ -174,6 +171,12 @@ function add_people_to(place, all_patients) {
     }
 }
 
+/**     find treatment in the diagnostic grid
+ * 
+ * @param {*} illness           : illness to find in diagnostic grid
+ * @param {*} diagnostic_grid   : diagnostic grid where to find illness
+ * @returns 
+ */
 function find_treatment_to(illness, diagnostic_grid) {
     console.log(`So you have illness of ${illness} `);
     let pos_illness = diagnostic_grid.illness.indexOf(illness);
@@ -181,8 +184,13 @@ function find_treatment_to(illness, diagnostic_grid) {
     console.log(`The treatment of your illness is ${illness_treatment}`);
 
     return illness_treatment;
-
 }
+/**     find treatment price in the diagnostic grid
+ * 
+ * @param {*} diagnostic_of_patient     : diagnostic grid where to find illness price
+ * @param {*} pharmacy                  : place where are illness treatment
+ * @returns                             : price of treatment
+ */
 function find_price_to(diagnostic_of_patient, pharmacy) {
     let pos_treatment = pharmacy.treatment[0].indexOf(diagnostic_of_patient);
 
@@ -190,10 +198,21 @@ function find_price_to(diagnostic_of_patient, pharmacy) {
     return price_treatment;
 }
 
+/**     check if patient has enough money to pay consultation
+ * 
+ * @param {*} patient_money         : money of patient
+ * @param {*} consultation_price    : price of consultation
+ * @returns                         : boolean if patient has enough money or not
+ */
 function check_money_of(patient_money, consultation_price) {
     return patient_money >= consultation_price;
 }
 
+/**     diagnose patient by doctor
+ * 
+ * @param {*} patient       : patient to be diagnosed
+ * @param {*} doctor        : doctor who diagnose patient
+ */
 function diagnose(patient, doctor) {
     console.log(`Hello ${patient.name}, I'm ${doctor.name} the doctor\nso please tell me what is wrong ?`);
     doctor.name_patient = patient.name;
@@ -205,59 +224,68 @@ function diagnose(patient, doctor) {
     console.log(`The consultation is over, the price is 50€`);
     if (check_money_of( patient.money, 50 ) ) {
         patient.money -= 50;
+        console.log(`You have now ${patient.money}€ and it's enough :)`);
         console.log("Thank you for your trust");
         console.log(`Have a good day ${patient.name} :)`);
 
         doctor.money +=  50 ;
-        // console.log(doctor.money);
     } else{
         console.log(`You just have ${patient.money} \nYou will have to take a credit\nBYE!` );
     }
-    // console.log(doctor.diagnose);
 }
 
 
-
+/**     Patient go to doctor
+ * 
+ * @param {*} patient           : patient to be diagnosed
+ * @param {*} doctor_office     : office of doctor
+ * @param {*} doctor            : doctor who diagnose patient
+ * @returns                     : a patient diagnosed
+ */
 function go_to_doctor(patient, doctor_office, doctor) {
     patient.moveTo(doctor_office);
 
     add_people_to(doctor_office, INSTANCE.PATIENTS);
 
-    INSTANCE.DOCTOR.patient_in = patient;
-
+    doctor.patient_in = patient;
     diagnose(patient,doctor);
-
-
+    // INSTANCE.CAT.meow();
     doctor.name_patient = ""; doctor.diagnotic = ""; doctor.patient_in = ""; 
     doctor.patient_out = patient;
-    // console.log(doctor);
-
     return patient;
-
 }
+
+/**    Patient go to graveyard
+ * 
+ * @param {*} patient           : patient died
+ * @param {*} graveyard         : place where to place death's patient
+ */
 function go_to_graveyard(patient, graveyard) {
     console.log(`You don't have enough money to pay the treatment,\nYou will go to the ${graveyard.name} sorry :/`);
     graveyard.people.push(patient);
     console.log(`We are deeply saddened by the loss \nand send you our most sincere condolences for ${patient.name}`);
 }
 
+/**     Patient go to pharmacy
+ * 
+ * @param {*} patient           : patient who need a treatment
+ * @param {*} pharmacy          : place where patient find treatment
+ */
 function go_to_pharmacy(patient, pharmacy) {
 
     console.log(`------ ${patient.name} is going to the ${pharmacy.name} ------`);
     console.log(`Welcome ${patient.name}, how can I help you ?`);
     pharmacy.people = patient;
-    // console.log(pharmacy.people);
     console.log(`So, ${patient.name} you have illness of ${patient.illness}`);
 
     let price_treatment = find_price_to(patient.patient_diagnostic, pharmacy);
     console.log(`The ${patient.patient_diagnostic} treatment will cost you ${price_treatment}€`);
 
-
     if (patient.money >= price_treatment) {
         console.log(`You have ${patient.money}€ and the price for the treatment is ${price_treatment}€`);
-        console.log(`Thank you for yout trust and and looking forward to never seeing again.`);
+        console.log(`Thank you for your trust and looking forward to never seeing you again.`);
         patient.money -= price_treatment;
-        console.log(`You have now ${patient.money}`); 
+        console.log(`You have now ${patient.money}€ and you are cured :))`); 
     } else{
         console.log(`You have ${patient.money}€ and the price for the treatment is ${price_treatment}€`);
         go_to_graveyard(patient, INSTANCE.GRAVEYARD);
@@ -278,18 +306,49 @@ function life() {
     //Patients are in waiting room first
     INSTANCE.OFFICE.waiting_room.push(INSTANCE.PATIENTS);
     console.log(`But the doctor ${INSTANCE.DOCTOR.name} can help only one patient at the same time\nSo, ${INSTANCE.OFFICE.waiting_room[0].map( (x) => x.name + " ")}are waiting on the waiting room`);
+    console.log(INSTANCE.DOCTOR);
 
-    
     // First patient to get the doctor
-    
     let client ="";
-    client = go_to_doctor(INSTANCE.PATIENTS[2], INSTANCE.OFFICE, INSTANCE.DOCTOR);
-    
+    // client = go_to_doctor(INSTANCE.OPTIMUS, INSTANCE.OFFICE, INSTANCE.DOCTOR);
 
-    //now patient go to the pharmacy
-    go_to_pharmacy(client, INSTANCE.PHARMACY)
-    // console.log(INSTANCE.SANGOKU);
-    // console.log(INSTANCE.PHARMACY);
+    // INSTANCE.OFFICE.people = [];
+    // console.log(INSTANCE.DOCTOR);
+    
+    // //now patient go to the pharmacy and check if enough,
+    // //In the case, patient doesn't have so => place to graveyard
+    // //Else, patient is cured
+    // go_to_pharmacy(client, INSTANCE.PHARMACY);
+
+    // client = "";
+
+    // console.log(INSTANCE.OFFICE);
+    // client = go_to_doctor(INSTANCE.MARCUS, INSTANCE.OFFICE, INSTANCE.DOCTOR);
+
+    // INSTANCE.OFFICE.waiting_room[0].forEach(element => {
+    //     console.log(element);
+    //     client = go_to_doctor(element, INSTANCE.OFFICE, INSTANCE.DOCTOR);
+    //     INSTANCE.OFFICE.people = [];
+    //     go_to_pharmacy(client, INSTANCE.PHARMACY);
+
+
+    //     client = "";
+
+
+    // });
+
+    for (let index = 0; index < INSTANCE.OFFICE.waiting_room[0].length; index++) {
+        // console.log(INSTANCE.OFFICE.waiting_room[0][index]);
+        client = go_to_doctor(INSTANCE.OFFICE.waiting_room[0][index], INSTANCE.OFFICE, INSTANCE.DOCTOR);
+        INSTANCE.OFFICE.people = [];
+        go_to_pharmacy(client, INSTANCE.PHARMACY);
+
+
+        client = "";
+        index--;
+        
+    }
+
 
 }
 
